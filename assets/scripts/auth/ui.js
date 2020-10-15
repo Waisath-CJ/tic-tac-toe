@@ -15,7 +15,6 @@ const signInSuccess = res => {
   $("#message").text('Successfully signed in ' + res.user.email)
   store.user = res.user
   $('#sign-in-form').trigger('reset')
-  $('#sign-up-section').hide()
   $('#sign-in-section').hide()
   $('#change-password-section').show()
   $('#sign-out-section').show()
