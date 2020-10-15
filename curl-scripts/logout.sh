@@ -1,13 +1,7 @@
-curl "https://tic-tac-toe-api-production.herokuapp.com/sign-up" \
+curl "https://tic-tac-toe-api-production.herokuapp.com/sign-out" \
   --include \
-  --request POST \
-  --header "Content-Type: application/json" \
-  --data '{
-    "credentials": {
-      "email": "'"${EMAIL}"'",
-      "password": "'"${PASSWORD}"'",
-      "password_confirmation": "'"${PASSWORD}"'"
-    }
-  }'
+  --request DELETE \
+  --header "Authorization: Bearer ${TOKEN}" \
+  --header "Content-Type: application/json" 
 
 echo
