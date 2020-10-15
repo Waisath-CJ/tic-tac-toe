@@ -21,4 +21,11 @@ $(() => {
 
   // DELETE sign-out
   $('#sign-out').on('click', events.onSignOut)
+
+  // Switch from sign in to sign up
+  $('#sign-up-switch').on('click', events.signUpSwitch)
+
+  // Switch from sign up to sign in
+  $('#sign-in-switch').on('click', events.signInSwitch)
+
 })

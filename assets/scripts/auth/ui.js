@@ -5,6 +5,7 @@ const store = require('../store')
 const signUpSuccess = res => {
   $("#message").text('Thanks for signing up ' + res.user.email)
   $('#sign-up-form').trigger('reset')
+  signInSwitch()
 }
 const signUpFailure = err => {
   $("#message").text('Sign up failed, try again')
@@ -14,10 +15,10 @@ const signInSuccess = res => {
   $("#message").text('Successfully signed in ' + res.user.email)
   store.user = res.user
   $('#sign-in-form').trigger('reset')
-  $('#sign-up-section').css('display', 'none')
-  $('#sign-in-section').css('display', 'none')
-  $('#change-password-section').css('display', 'block')
-  $('#sign-out-section').css('display', 'block')
+  $('#sign-up-section').hide()
+  $('#sign-in-section').hide()
+  $('#change-password-section').show()
+  $('#sign-out-section').show()
 }
 const signInFailure = err => {
   $("#message").text('Sign in failed, try again')
@@ -35,14 +36,23 @@ const changePasswordFailure = err => {
 const signOutSuccess = () => {
   $("#message").text('Successfully signed out ' + store.user.email)
   delete store.user
-  $('#change-password-section').css('display', 'none')
-  $('#sign-out-section').css('display', 'none')
-  $('#sign-up-section').css('display', 'block')
-  $('#sign-in-section').css('display', 'block')
+  $('#change-password-section').hide()
+  $('#sign-out-section').hide()
+  $('#sign-in-section').show()
 }
 
 const signOutFailure = err => {
   $("#message").text('Sign out failed, try again')
+}
+
+const signUpSwitch = () => {
+  $('#sign-up-section').show()
+  $('#sign-in-section').hide()
+}
+
+const signInSwitch = () => {
+  $('#sign-up-section').hide()
+  $('#sign-in-section').show()
 }
 
 module.exports = {
@@ -53,5 +63,7 @@ module.exports = {
   changePasswordSuccess,
   changePasswordFailure,
   signOutSuccess,
-  signOutFailure
+  signOutFailure,
+  signUpSwitch,
+  signInSwitch
 }
