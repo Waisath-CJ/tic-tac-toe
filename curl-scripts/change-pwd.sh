@@ -1,12 +1,12 @@
-curl "https://tic-tac-toe-api-production.herokuapp.com/sign-up" \
+curl "https://tic-tac-toe-api-production.herokuapp.com/change-password" \
   --include \
-  --request POST \
+  --request PATCH \
+  --header "Authorization: Bearer ${TOKEN}" \
   --header "Content-Type: application/json" \
   --data '{
-    "credentials": {
-      "email": "'"${EMAIL}"'",
-      "password": "'"${PASSWORD}"'",
-      "password_confirmation": "'"${PASSWORD}"'"
+    "passwords": {
+      "old": "'"${OLDPASSWORD}"'",
+      "new": "'"${NEWPASSWORD}"'"
     }
   }'
 
