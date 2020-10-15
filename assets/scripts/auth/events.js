@@ -42,9 +42,21 @@ const onSignOut = e => {
     .catch(ui.signOutFailure)
 }
 
+const signUpSwitch = e => {
+  e.preventDefault()
+  ui.signUpSwitch()
+}
+
+const signInSwitch = e => {
+  e.preventDefault()
+  ui.signInSwitch()
+}
+
 module.exports = {
   onSignUp,
   onSignIn,
   onChangePassword,
-  onSignOut
+  onSignOut,
+  signUpSwitch,
+  signInSwitch
 }
