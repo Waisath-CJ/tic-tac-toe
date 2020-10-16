@@ -1,13 +1,5 @@
 @import '~bootstrap/scss/bootstrap';
 
-$black: #000;
-
-.border {
-  border: 3px solid $black;
-  margin: 20px;
-  padding: 20px;
-}
-
 .container {
   height: 100vh;
 }
@@ -23,8 +15,8 @@ $black: #000;
   justify-content: center;
   align-items: center;
   font-size: 15vh;
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
+  border-right: 3px solid black;
+  border-bottom: 3px solid black;
   min-height: calc(100% / 3);
 
   &:nth-child(3n) {
