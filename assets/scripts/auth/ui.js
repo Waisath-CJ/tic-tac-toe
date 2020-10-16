@@ -18,6 +18,7 @@ const signInSuccess = res => {
   $('#sign-in-section').hide()
   $('#change-password-section').show()
   $('#sign-out-section').show()
+  $('#game-controls-section').show()
 }
 const signInFailure = err => {
   $("#message").text('Sign in failed, try again')
@@ -35,9 +36,13 @@ const changePasswordFailure = err => {
 const signOutSuccess = () => {
   $("#message").text('Successfully signed out ' + store.user.email)
   delete store.user
+  delete store.game
   $('#change-password-section').hide()
   $('#sign-out-section').hide()
+  $('#game-board-section').hide()
+  $('#game-controls-section').hide()
   $('#sign-in-section').show()
+  $('.box').text('')
 }
 
 const signOutFailure = err => {
