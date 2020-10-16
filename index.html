@@ -15,73 +15,96 @@
 
 <body>
   <div class="container">
-    <h1 class="text-center">Tic Tac Toe</h1>
+    <header>
+      <h1 class="text-center">Tic Tac Toe</h1>
+    </header>
 
     <p id="message"></p>
 
-    <section id="sign-up-section">
-      <form id="sign-up-form">
-        <fieldset>
-          <legend>Sign Up</legend>
-          <div class="form-group">
-            <label for="sign-up-email">Email</label>
-            <input id="sign-up-email" class="form-control" type="email" name="credentials[email]" placeholder="Email">
-          </div>
-          <div class="form-group">
-            <label for="sign-up-password">Password</label>
-            <input id="sign-up-password" class="form-control" type="password" name="credentials[password]" placeholder="Password">
-          </div>
-          <div class="form-group">
-            <label for="sign-up-password_confirmation">Password Confirmation</label>
-            <input id="sign-up-password_confirmmation" class="form-control" type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
-          </div>
-          <button type="submit" class="btn-primary">Create Account</button>
-        </fieldset>
-      </form>
-      <br>
-      <p>Already have an account? <a href="#" id="sign-in-switch">Login</a></p>
-    </section>
+    <main>
+      <section id="sign-up-section">
+        <form id="sign-up-form">
+          <fieldset>
+            <legend>Sign Up</legend>
+            <div class="form-group">
+              <label for="sign-up-email">Email</label>
+              <input id="sign-up-email" class="form-control" type="email" name="credentials[email]" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <label for="sign-up-password">Password</label>
+              <input id="sign-up-password" class="form-control" type="password" name="credentials[password]" placeholder="Password">
+            </div>
+            <div class="form-group">
+              <label for="sign-up-password_confirmation">Password Confirmation</label>
+              <input id="sign-up-password_confirmmation" class="form-control" type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+            </div>
+            <button type="submit" class="btn-primary">Create Account</button>
+          </fieldset>
+        </form>
+        <br>
+        <p>Already have an account? <a href="#" id="sign-in-switch">Login</a></p>
+      </section>
+  
+      <section id="sign-in-section">
+        <form id="sign-in-form">
+          <fieldset>
+            <legend>Login</legend>
+            <div class="form-group">
+              <label for="sign-in-email">Email</label>
+              <input id="sign-in-email" class="form-control" type="email" name="credentials[email]" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <label for="sign-in-password">Password</label>
+              <input id="sign-in-password" class="form-control" type="password" name="credentials[password]" placeholder="Password">
+            </div>
+            <button type="submit" class="btn-primary">Login</button>
+          </fieldset>
+        </form>
+        <br>
+        <p>Don't have an account? <a href="#" id="sign-up-switch">Create an Account</a></p>
+      </section>
+  
+      <section id="change-password-section">
+        <form id="change-password-form">
+          <fieldset>
+            <legend>Change Password</legend>
+            <div class="form-group">
+              <label for="change-password-old">Old Password</label>
+              <input id="change-password-old" class="form-control" type="password" name="passwords[old]" placeholder="Old password">
+            </div>
+            <div class="form-group">
+              <label for="change-password-new">New Password</label>
+              <input id="change-password-new" class="form-control" type="password" name="passwords[new]" placeholder="New password">
+            </div>
+            <button type="submit" class="btn-primary">Change Password</button>
+          </fieldset>
+        </form>
+      </section>
+  
+      <section id="sign-out-section">
+        <legend>Sign Out</legend>
+        <button id="sign-out" class="btn-primary">Sign Out</button>
+      </section>
 
-    <section id="sign-in-section">
-      <form id="sign-in-form">
-        <fieldset>
-          <legend>Login</legend>
-          <div class="form-group">
-            <label for="sign-in-email">Email</label>
-            <input id="sign-in-email" class="form-control" type="email" name="credentials[email]" placeholder="Email">
-          </div>
-          <div class="form-group">
-            <label for="sign-in-password">Password</label>
-            <input id="sign-in-password" class="form-control" type="password" name="credentials[password]" placeholder="Password">
-          </div>
-          <button type="submit" class="btn-primary">Login</button>
-        </fieldset>
-      </form>
-      <br>
-      <p>Don't have an account? <a href="#" id="sign-up-switch">Create an Account</a></p>
-    </section>
+      <section id="game-board-section" class="container">
+        <div class="row board h-100">
+          <div class="col-4 box"></div>
+          <div class="col-4 box"></div>
+          <div class="col-4 box"></div>
+          <div class="col-4 box"></div>
+          <div class="col-4 box"></div>
+          <div class="col-4 box"></div>
+          <div class="col-4 box"></div>
+          <div class="col-4 box"></div>
+          <div class="col-4 box"></div>
+        </div>
+      </section>
 
-    <section id="change-password-section">
-      <form id="change-password-form">
-        <fieldset>
-          <legend>Change Password</legend>
-          <div class="form-group">
-            <label for="change-password-old">Old Password</label>
-            <input id="change-password-old" class="form-control" type="password" name="passwords[old]" placeholder="Old password">
-          </div>
-          <div class="form-group">
-            <label for="change-password-new">New Password</label>
-            <input id="change-password-new" class="form-control" type="password" name="passwords[new]" placeholder="New password">
-          </div>
-          <button type="submit" class="btn-primary">Change Password</button>
-        </fieldset>
-      </form>
-    </section>
-
-    <section id="sign-out-section">
-      <legend>Sign Out</legend>
-      <button id="sign-out" class="btn-primary">Sign Out</button>
-    </section>
+      <section id="game-controls-section">
+        <p id="welcome-message">Welcome!</p>
+        <button class="btn-primary" id="create-game-button">Start a Game</button>
+      </section>
+    </main>
   </div>
 </body>
 
