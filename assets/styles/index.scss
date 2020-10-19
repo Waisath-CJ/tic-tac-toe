@@ -38,10 +38,11 @@
   user-select: none;
 }
 
-#change-password-section,
+#change-password-form,
 #sign-out-section,
 #sign-up-section,
 #game-board-section,
-#game-controls-section {
+#game-controls-section,
+#user-dropdown {
   display: none;
 }

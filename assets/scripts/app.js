@@ -40,4 +40,9 @@ $(() => {
   // Switch from sign up to sign in
   $('#sign-in-switch').on('click', authEvents.signInSwitch)
 
+  // Switch options from list to change password form
+  $('#change-password').on('click', authEvents.changePasswordSwitch)
+
+  // Switch options from change password form to list form
+  $('#back-btn').on('click', authEvents.optionSwitch)
 })

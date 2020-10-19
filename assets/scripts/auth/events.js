@@ -52,11 +52,23 @@ const signInSwitch = e => {
   ui.signInSwitch()
 }
 
+const changePasswordSwitch = e => {
+  e.preventDefault()
+  ui.changePasswordSwitch()
+}
+
+const optionSwitch = e => {
+  e.preventDefault()
+  ui.optionSwitch()
+}
+
 module.exports = {
   onSignUp,
   onSignIn,
   onChangePassword,
   onSignOut,
   signUpSwitch,
-  signInSwitch
+  signInSwitch,
+  changePasswordSwitch,
+  optionSwitch
 }
