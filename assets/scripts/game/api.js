@@ -14,6 +14,26 @@ const createGame = () => {
   })
 }
 
+const updateGame = (index, player, isOver) => {
+  return $.ajax({
+    url: config.apiUrl + (`/games/${store.game._id}`),
+    method: 'PATCH',
+    headers: {
+      Authorization: `Bearer ${store.user.token}`
+    },
+    data: {
+      game: {
+        cell: {
+          index: index,
+          value: player
+        },
+        over: isOver
+      }
+    }
+  })
+}
+
 module.exports = {
-  createGame
+  createGame,
+  updateGame
 }
