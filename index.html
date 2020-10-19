@@ -29,14 +29,14 @@
               <label for="change-password-new">New Password</label>
               <input id="change-password-new" class="form-control" type="password" name="passwords[new]" placeholder="New password">
             </div>
-            <button type="submit" class="btn-secondary">Change Password</button>
+            <button type="submit" class="btn btn-secondary">Change Password</button>
           </fieldset>
         </form>
       </section>
   
       <section id="sign-out-section">
         <legend>Sign Out</legend>
-        <button id="sign-out" class="btn-secondary">Sign Out</button>
+        <button id="sign-out" class="btn btn-secondary">Sign Out</button>
       </section>
     </header>
 
@@ -59,7 +59,7 @@
               <label for="sign-up-password_confirmation">Password Confirmation</label>
               <input id="sign-up-password_confirmmation" class="form-control" type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
             </div>
-            <button type="submit" class="btn-secondary">Create Account</button>
+            <button type="submit" class="btn btn-secondary">Create Account</button>
           </fieldset>
         </form>
         <br>
@@ -78,7 +78,7 @@
               <label for="sign-in-password">Password</label>
               <input id="sign-in-password" class="form-control" type="password" name="credentials[password]" placeholder="Password">
             </div>
-            <button type="submit" class="btn-secondary">Login</button>
+            <button type="submit" class="btn btn-secondary">Login</button>
           </fieldset>
         </form>
         <br>
@@ -87,7 +87,9 @@
 
       <section id="game-controls-section">
         <p id="welcome-message">Welcome!</p>
-        <button class="btn-primary" id="create-game-button">Start a Game</button>
+        <button class="btn btn-primary" id="create-game-button">New Game</button>
+        <button class="btn btn-secondary" id="get-all-games">Get Game Count</button>
+        <p id="games-played"></p>
       </section>
 
       <section id="game-board-section" class="container">
