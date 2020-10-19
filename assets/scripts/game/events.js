@@ -1,7 +1,12 @@
 const api = require('./api')
 const ui = require('./ui')
+const store = require('../store')
 
 let currentPlayer = '✕'
+
+const checkWinner = () => {
+  return false
+}
 
 const onCreateGame = e => {
   e.preventDefault()
@@ -17,11 +22,12 @@ const onBoxClick = e => {
   e.preventDefault()
   const box = $(e.target)
 
-    // Then set the text to the current player
-    box.text(currentPlayer)
-
-    // Change the current player
-    currentPlayer = currentPlayer === 'O' ? '✕' : 'O'
+  if (!box.text()) {
+    api.updateGame(box.data('cellIndex'), currentPlayer, checkWinner())
+      .then(ui.updateGameSuccess)
+      .then(() => currentPlayer = currentPlayer === 'O' ? '✕' : 'O')
+      .catch(ui.updateGameFailure)
+  }
 }
 
 module.exports = {
