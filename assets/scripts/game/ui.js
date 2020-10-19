@@ -5,6 +5,7 @@ const createGameSuccess = res => {
   store.game = res.game
   $('.box').text('')
   $('#game-board-section').show()
+  $('#games-played').hide()
 }
 
 const createGameFailure = err => {
@@ -23,9 +24,19 @@ const updateGameFailure = err => {
   alert('Failure!')
 }
 
+const getGamesSuccess = res => {
+  $('#games-played').show().text(`You have played ${res.games.length} games!`)
+}
+
+const getGamesFailure = err => {
+  alert('Failure!')
+}
+
 module.exports = {
   createGameSuccess,
   createGameFailure,
   updateGameSuccess,
-  updateGameFailure
+  updateGameFailure,
+  getGamesSuccess,
+  getGamesFailure
 }

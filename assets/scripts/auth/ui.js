@@ -43,6 +43,7 @@ const signOutSuccess = () => {
   $('#game-controls-section').hide()
   $('#sign-in-section').show()
   $('.box').text('')
+  $('#games-played').text('')
 }
 
 const signOutFailure = err => {

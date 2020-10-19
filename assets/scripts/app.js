@@ -30,6 +30,9 @@ $(() => {
   // UPDATE game
   $('.box').on('click', gameEvents.onBoxClick)
 
+  // GET games
+  $('#get-all-games').on('click', gameEvents.onGetGames)
+
   // MISC Event Listeners
   // Switch from sign in to sign up
   $('#sign-up-switch').on('click', authEvents.signUpSwitch)
