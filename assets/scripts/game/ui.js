@@ -1,5 +1,4 @@
 const store = require('../store')
-const events = require('./events')
 
 const createGameSuccess = res => {
   store.game = res.game
