@@ -1,13 +1,47 @@
 @import '~bootstrap/scss/bootstrap';
 
-$black: #000;
-
-.border {
-  border: 3px solid $black;
-  margin: 20px;
-  padding: 20px;
+.container {
+  height: 100vh;
 }
 
-#change-password-section, #sign-out-section, #sign-up-section {
+.board {
+  max-height: calc(100vh - 75px);
+  max-width: calc(100vh - 75px);
+  margin: 0 auto;
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15vh;
+  border-right: 3px solid black;
+  border-bottom: 3px solid black;
+  min-height: calc(100% / 3);
+
+  &:nth-child(3n) {
+    border-right: 0;
+  }
+
+  &:nth-last-child(-n + 3) {
+    border-bottom: 0;
+  }
+
+  background-color: white;
+  color: black;
+  text-shadow: 2px 2px rgb(251, 255, 0);
+
+  &:hover {
+    background-color: lightskyblue;
+  }
+
+  user-select: none;
+}
+
+#change-password-section,
+#sign-out-section,
+#sign-up-section,
+#game-board-section,
+#game-controls-section {
   display: none;
 }
