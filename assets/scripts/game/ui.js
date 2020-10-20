@@ -23,6 +23,14 @@ const updateGameFailure = err => {
   alert('Failure!')
 }
 
+const winGame = winner => {
+  console.log(`${winner} wins!`)
+}
+
+const drawGame = () => {
+  console.log('It\'s a tie!')
+}
+
 const getGamesSuccess = res => {
   $('#games-played').show().text(`You have played ${res.games.length} games!`)
 }
@@ -37,5 +45,7 @@ module.exports = {
   updateGameSuccess,
   updateGameFailure,
   getGamesSuccess,
-  getGamesFailure
+  getGamesFailure,
+  winGame,
+  drawGame
 }
