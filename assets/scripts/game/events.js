@@ -15,35 +15,33 @@ const winningConditions = [
   [2, 4, 6]
 ]
 
-// Got some of the following code for determining a winner from the following website:
-// https://dev.to/bornasepic/pure-and-simple-tic-tac-toe-with-javascript-4pgn
-// const checkWinner = () => {
-//   let roundWon = false
-//   for (let i = 0; i <= 7; i++) {
-//     const winCondition = winningConditions[i]
-//     let a = store.game[winCondition[0]]
-//     let b = store.game[winCondition[1]]
-//     let c = store.game[winCondition[2]]
-//     if (a === '' || b === '' || c === '') {
-//       continue
-//     }
-//     if (a === b && b === c) {
-//       roundWon = true
-//       break
-//     }
-//   }
-//   if (roundWon) {
-//     return 'win'
-//   }
-//   /* 
-//   We will check weather there are any values in our game state array 
-//   that are still not populated with a player sign
-//   */
-//   let roundDraw = !store.game.cells.includes("")
-//   if (roundDraw) {
-//     return 'draw'
-//   }
-// }
+const checkConditions = (currentPlayer) => {
+  if (store.game.cells[0] === currentPlayer &&
+    store.game.cells[1] === currentPlayer &&
+    store.game.cells[2] === currentPlayer) return true
+  else if (store.game.cells[3] === currentPlayer &&
+    store.game.cells[4] === currentPlayer &&
+    store.game.cells[5] === currentPlayer) return true
+  else if (store.game.cells[6] === currentPlayer &&
+    store.game.cells[7] === currentPlayer &&
+    store.game.cells[8] === currentPlayer) return true
+  else if (store.game.cells[0] === currentPlayer &&
+    store.game.cells[3] === currentPlayer &&
+    store.game.cells[6] === currentPlayer) return true
+  else if (store.game.cells[1] === currentPlayer &&
+    store.game.cells[4] === currentPlayer &&
+    store.game.cells[7] === currentPlayer) return true
+  else if (store.game.cells[2] === currentPlayer &&
+    store.game.cells[5] === currentPlayer &&
+    store.game.cells[8] === currentPlayer) return true
+  else if (store.game.cells[0] === currentPlayer &&
+    store.game.cells[4] === currentPlayer &&
+    store.game.cells[8] === currentPlayer) return true
+  else if (store.game.cells[2] === currentPlayer &&
+    store.game.cells[4] === currentPlayer &&
+    store.game.cells[6] === currentPlayer) return true
+  else return false
+}
 
 const onCreateGame = e => {
   e.preventDefault()
@@ -61,19 +59,24 @@ const onBoxClick = e => {
   const box = $(e.target)
 
   if (!box.text() && !gameOver) {
-    // if (checkWinner()) {
-    //   console.log(currentPlayer, ' wins!')
-    //   gameOver = true
-    // } else if (!store.game.cells.includes('')) {
-    //   console.log('It\'s a draw!')
-    //   gameOver = true
-    // }
-
-    // if (checkWinner() === 'win')
-
     api.updateGame(box.data('cellIndex'), currentPlayer, gameOver)
       .then(ui.updateGameSuccess)
-      .then(() => currentPlayer = currentPlayer === 'O' ? '✕' : 'O')
+      .then(() => {
+        if (checkConditions(currentPlayer)) {
+          gameOver = true
+          api.updateGame(box.data('cellIndex'), currentPlayer, gameOver)
+            .then(res => ui.winGame(currentPlayer))
+            .catch(ui.updateGameFailure)
+        }
+        else if (!store.game.cells.includes('')) {
+          gameOver = true
+          api.updateGame(box.data('cellIndex'), currentPlayer, gameOver)
+            .then(res => ui.drawGame())
+            .catch(ui.updateGameFailure)
+        } else {
+          currentPlayer = currentPlayer === 'O' ? '✕' : 'O'
+        }
+      })
       .catch(ui.updateGameFailure)
   }
 }
