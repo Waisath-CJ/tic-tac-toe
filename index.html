@@ -18,29 +18,32 @@
     <header>
       <h1 class="display-1">Tic Tac Toe</h1>
 
-      <div class="dropdown" id="user-dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Options
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="menu-options">
-          <button class="dropdown-item btn-link" id="change-password">Change Password</button>
-          <button class="dropdown-item btn-link" id="sign-out">Logout</button>
-          <form id="change-password-form" class="px-4 py-3">
-            <fieldset>
-              <legend>Change Password</legend>
-              <div class="form-group">
-                <label for="change-password-old">Old Password</label>
-                <input id="change-password-old" class="form-control" type="password" name="passwords[old]" placeholder="Old password">
-              </div>
-              <div class="form-group">
-                <label for="change-password-new">New Password</label>
-                <input id="change-password-new" class="form-control" type="password" name="passwords[new]" placeholder="New password">
-              </div>
-              <button type="submit" class="btn btn-primary">Change Password</button>
-              <button class="btn btn-secondary" id="back-btn">Back</button>
-            </fieldset>
-          </form>
+      <div id="user-controls">
+        <div class="dropdown" role="group" id="change-password-dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Change Password
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="menu-options">
+            <form id="change-password-form" class="px-4 py-3">
+              <fieldset>
+                <legend>Change Password</legend>
+                <div class="form-group">
+                  <label for="change-password-old">Old Password</label>
+                  <input id="change-password-old" class="form-control" type="password" name="passwords[old]"
+                    placeholder="Old password">
+                </div>
+                <div class="form-group">
+                  <label for="change-password-new">New Password</label>
+                  <input id="change-password-new" class="form-control" type="password" name="passwords[new]"
+                    placeholder="New password">
+                </div>
+                <button type="submit" class="btn btn-primary">Change Password</button>
+              </fieldset>
+            </form>
+          </div>
         </div>
+        <button class="btn btn-secondary" id="sign-out">Logout</button>
       </div>
     </header>
 
@@ -57,11 +60,13 @@
             </div>
             <div class="form-group">
               <label for="sign-up-password">Password</label>
-              <input id="sign-up-password" class="form-control" type="password" name="credentials[password]" placeholder="Password">
+              <input id="sign-up-password" class="form-control" type="password" name="credentials[password]"
+                placeholder="Password">
             </div>
             <div class="form-group">
               <label for="sign-up-password_confirmation">Password Confirmation</label>
-              <input id="sign-up-password_confirmmation" class="form-control" type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+              <input id="sign-up-password_confirmmation" class="form-control" type="password"
+                name="credentials[password_confirmation]" placeholder="Confirm Password">
             </div>
             <button type="submit" class="btn btn-secondary">Create Account</button>
           </fieldset>
@@ -69,7 +74,7 @@
         <br>
         <p>Already have an account? <a href="#" id="sign-in-switch">Login</a></p>
       </section>
-  
+
       <section id="sign-in-section">
         <form id="sign-in-form">
           <fieldset>
@@ -80,7 +85,8 @@
             </div>
             <div class="form-group">
               <label for="sign-in-password">Password</label>
-              <input id="sign-in-password" class="form-control" type="password" name="credentials[password]" placeholder="Password">
+              <input id="sign-in-password" class="form-control" type="password" name="credentials[password]"
+                placeholder="Password">
             </div>
             <button type="submit" class="btn btn-secondary">Login</button>
           </fieldset>
@@ -96,7 +102,7 @@
         <p id="games-played"></p>
       </section>
 
-      <section id="game-board-section" class="container">
+      <section id="game-board-section" class="container board-container">
         <div class="row board h-100">
           <div class="col-4 box" data-cell-index="0" id="0"></div>
           <div class="col-4 box" data-cell-index="1" id="1"></div>
