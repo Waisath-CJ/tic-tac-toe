@@ -17,9 +17,8 @@ const signInSuccess = res => {
   $('#sign-in-form').trigger('reset')
   $('#sign-in-section').hide()
   $('#change-password-section').show()
-  $('#sign-out-section').show()
   $('#game-controls-section').show()
-  $('#user-dropdown').show()
+  $('#user-controls').show()
 }
 const signInFailure = err => {
   $("#message").text('Sign in failed, try again')
@@ -28,7 +27,6 @@ const signInFailure = err => {
 const changePasswordSuccess = () => {
   $("#message").text('Successfully changed password for ' + store.user.email)
   $('#change-password-form').trigger('reset')
-  optionSwitch()
 }
 
 const changePasswordFailure = err => {
@@ -39,12 +37,10 @@ const signOutSuccess = () => {
   $("#message").text('Successfully signed out ' + store.user.email)
   delete store.user
   delete store.game
-  $('#change-password-section').hide()
-  $('#sign-out-section').hide()
+  $('#user-controls').hide()
   $('#game-board-section').hide()
   $('#game-controls-section').hide()
   $('#sign-in-section').show()
-  $('#user-dropdown').hide()
   $('.box').text('')
   $('#games-played').text('')
 }
@@ -63,18 +59,6 @@ const signInSwitch = () => {
   $('#sign-in-section').show()
 }
 
-const changePasswordSwitch = () => {
-  $('#change-password').hide()
-  $('#sign-out').hide()
-  $('#change-password-form').show()
-}
-
-const optionSwitch = () => {
-  $('#change-password').show()
-  $('#sign-out').show()
-  $('#change-password-form').hide()
-}
-
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -85,7 +69,5 @@ module.exports = {
   signOutSuccess,
   signOutFailure,
   signUpSwitch,
-  signInSwitch,
-  changePasswordSwitch,
-  optionSwitch
+  signInSwitch
 }
