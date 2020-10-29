@@ -8,7 +8,7 @@ const createGameSuccess = res => {
 }
 
 const createGameFailure = err => {
-  alert('Failure!')
+  $('#message').text(err)
 }
 
 const updateGameSuccess = res => {
@@ -20,15 +20,15 @@ const updateGameSuccess = res => {
 }
 
 const updateGameFailure = err => {
-  alert('Failure!')
+  $('#message').text(err)
 }
 
 const winGame = winner => {
-  console.log(`${winner} wins!`)
+  $('#message').text(`${winner} wins!`)
 }
 
 const drawGame = () => {
-  console.log('It\'s a tie!')
+  $('#message').text('It\'s a tie!')
 }
 
 const getGamesSuccess = res => {
@@ -36,7 +36,7 @@ const getGamesSuccess = res => {
 }
 
 const getGamesFailure = err => {
-  alert('Failure!')
+  $('#message').text(err)
 }
 
 module.exports = {
