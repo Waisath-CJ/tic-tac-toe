@@ -2,7 +2,7 @@ const api = require('./api')
 const ui = require('./ui')
 const store = require('../store')
 
-let currentPlayer = '✕'
+let currentPlayer = 'X'
 let gameOver = false
 
 const checkConditions = (currentPlayer) => {
@@ -36,7 +36,7 @@ const checkConditions = (currentPlayer) => {
 const onCreateGame = e => {
   e.preventDefault()
 
-  if (currentPlayer === 'O') currentPlayer = '✕'
+  if (currentPlayer === 'O') currentPlayer = 'X'
   if (gameOver === true) gameOver = false
 
   api.createGame()
@@ -63,7 +63,7 @@ const onBoxClick = e => {
             .then(res => ui.drawGame())
             .catch(ui.updateGameFailure)
         } else {
-          currentPlayer = currentPlayer === 'O' ? '✕' : 'O'
+          currentPlayer = currentPlayer === 'O' ? 'X' : 'O'
         }
       })
       .catch(ui.updateGameFailure)

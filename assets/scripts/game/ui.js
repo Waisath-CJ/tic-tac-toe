@@ -32,7 +32,14 @@ const drawGame = () => {
 }
 
 const getGamesSuccess = res => {
-  $('#games-played').show().text(`You have played ${res.games.length} games!`)
+  let message = ''
+  if (res.games.length === 0)
+    message = `You haven't played any games yet!`
+  else {
+    message = 'You have played '
+    message += res.games.length === 1 ? '1 game!' : `${res.games.length} games!`
+  }
+  $('#games-played').show().text(message)
 }
 
 const getGamesFailure = err => {

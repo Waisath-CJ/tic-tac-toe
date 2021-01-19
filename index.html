@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Tic Tac Toe</title>
+  <title>Cosmic Tic Tac Toe</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Do not add `link` tags-->
@@ -16,7 +16,14 @@
 <body>
   <div class="container">
     <header>
-      <h1 class="display-1">Tic Tac Toe</h1>
+      <h1 class="display-1">Cosmic Tic Tac Toe</h1>
+      
+      <div class="alert alert-danger alert-dismissible fade show" role="alert" id="err-alert">
+        <span id="err-message"></span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
 
       <div id="user-controls">
         <div class="dropdown" role="group" id="change-password-dropdown">
@@ -46,8 +53,6 @@
         <button class="btn btn-secondary" id="sign-out">Logout</button>
       </div>
     </header>
-
-    <p id="message"></p>
 
     <main>
       <section id="sign-up-section">
@@ -98,7 +103,7 @@
       <section id="game-controls-section">
         <p id="welcome-message">Welcome!</p>
         <button class="btn btn-primary" id="create-game-button">New Game</button>
-        <button class="btn btn-secondary" id="get-all-games">Get Game Count</button>
+        <button class="btn btn-secondary" id="get-games">Get Game Count</button>
         <p id="games-played"></p>
       </section>
 
@@ -116,6 +121,20 @@
         </div>
       </section>
     </main>
+  </div>
+
+  <!-- Notification Toast -->
+  <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-end" style="position: absolute; bottom: 5%; width: 100%; min-height: 100px;">
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="notification-toast" data-delay="5000" style="color: #000000;">
+      <div class="toast-header">
+        <strong class="mr-auto">Cosmic Tic Tac Toe</strong>
+        <small>just now</small>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="toast-body" id="toast-message"></div>
+    </div>
   </div>
 </body>
 
