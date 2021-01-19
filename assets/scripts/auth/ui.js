@@ -3,16 +3,19 @@
 const store = require('../store')
 
 const signUpSuccess = res => {
-  $("#message").text('Thanks for signing up ' + res.user.email)
+  $("#toast-message").text('Thanks for signing up ' + res.user.email)
+  $('#notification-toast').toast('show')
   $('#sign-up-form').trigger('reset')
   signInSwitch()
 }
 const signUpFailure = err => {
-  $("#message").text('Sign up failed, try again')
+  $("#err-message").text('Sign up failed, try again')
+  $('#err-alert').show()
 }
 
 const signInSuccess = res => {
-  $("#message").text('Successfully signed in ' + res.user.email)
+  $("#toast-message").text('Successfully signed in ' + res.user.email)
+  $('#notification-toast').toast('show')
   store.user = res.user
   $('#sign-in-form').trigger('reset')
   $('#sign-in-section').hide()
@@ -21,20 +24,24 @@ const signInSuccess = res => {
   $('#user-controls').show()
 }
 const signInFailure = err => {
-  $("#message").text('Sign in failed, try again')
+  $("#err-message").text('Sign in failed, try again')
+  $('#err-alert').show()
 }
 
 const changePasswordSuccess = () => {
-  $("#message").text('Successfully changed password for ' + store.user.email)
+  $("#toast-message").text('Successfully changed password for ' + store.user.email)
+  $('#notification-toast').toast('show')
   $('#change-password-form').trigger('reset')
 }
 
 const changePasswordFailure = err => {
-  $("#message").text('Password change failed, try again')
+  $("#err-message").text('Password change failed, try again')
+  $('#err-alert').show()
 }
 
 const signOutSuccess = () => {
-  $("#message").text('Successfully signed out ' + store.user.email)
+  $("#toast-message").text('Successfully signed out ' + store.user.email)
+  $('#notification-toast').toast('show')
   delete store.user
   delete store.game
   $('#user-controls').hide()
@@ -46,7 +53,8 @@ const signOutSuccess = () => {
 }
 
 const signOutFailure = err => {
-  $("#message").text('Sign out failed, try again')
+  $("#err-message").text('Sign out failed, try again')
+  $('#err-alert').show()
 }
 
 const signUpSwitch = () => {
