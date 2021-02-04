@@ -11,29 +11,39 @@ body {
   color: #FFFFFF;
 }
 
-a {
-  color: #FFFFFF;
-  padding: 0px 5px;
-  background-color: #000000;
-  border-radius: 15px;
+hr {
+  border: 1px solid #FFFFFF;
+}
 
-  &:hover {
-    color: #FFFFFF;
-    text-decoration: underline;
-  }
+.box-border,
+.modal-content {
+  border: 2px solid #FFFFFF;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: rgba(2, 22, 59, 0.63);
 }
 
 .display-1 {
   font-family: 'Orbitron', sans-serif;
   color: #FFFFFF;
+  text-align: center;
 }
 
-#user-controls,
-#sign-up-section,
+#player-turn {
+  text-align: center;
+  font-size: 40px;
+}
+
 #game-board-section,
-#game-controls-section,
-#err-alert {
+#err-alert,
+#change-password-err-alert,
+#game-results {
   display: none;
+}
+
+.signed-in {
+  display: none;
+  text-align: center;
 }
 
 /* Board Styles */

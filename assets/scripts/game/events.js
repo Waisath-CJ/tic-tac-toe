@@ -50,7 +50,7 @@ const onBoxClick = e => {
 
   if (!box.text() && !gameOver) {
     api.updateGame(box.data('cellIndex'), currentPlayer, gameOver)
-      .then(ui.updateGameSuccess)
+      .then(res => ui.updateGameSuccess(res, currentPlayer))
       .then(() => {
         if (checkConditions(currentPlayer)) {
           gameOver = true

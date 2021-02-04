@@ -4,31 +4,38 @@ const createGameSuccess = res => {
   store.game = res.game
   $('.box').text('')
   $('#game-board-section').show()
-  $('#games-played').hide()
+  $('#games-played').text('')
+  $('#game-results').text('').hide()
+  $('#player-turn').text("X's turn")
 }
 
 const createGameFailure = err => {
-  $('#message').text(err)
+  $('#err-message').text(err)
+  $('#err-alert').show()
 }
 
-const updateGameSuccess = res => {
+const updateGameSuccess = (res, currentPlayer) => {
   store.game = res.game
   // console.log(store.game)
   for (let i = 0; i < 9; i++) {
     $(`#${i}`).text(store.game.cells[i])
   }
+  $('#player-turn').text(`${currentPlayer === 'O' ? 'X' : 'O'}'s turn`)
 }
 
 const updateGameFailure = err => {
-  $('#message').text(err)
+  $('#err-message').text(err)
+  $('#err-alert').show()
 }
 
 const winGame = winner => {
-  $('#message').text(`${winner} wins!`)
+  $('#game-results').text(`${winner} wins!`).show()
+  $('#game-board-section').hide()
 }
 
 const drawGame = () => {
-  $('#message').text('It\'s a tie!')
+  $('#game-results').text('It\'s a tie!').show()
+  $('#game-board-section').hide()
 }
 
 const getGamesSuccess = res => {
@@ -39,11 +46,12 @@ const getGamesSuccess = res => {
     message = 'You have played '
     message += res.games.length === 1 ? '1 game!' : `${res.games.length} games!`
   }
-  $('#games-played').show().text(message)
+  $('#games-played').text(message).show()
 }
 
 const getGamesFailure = err => {
-  $('#message').text(err)
+  $('#err-message').text(err)
+  $('#err-alert').show()
 }
 
 module.exports = {

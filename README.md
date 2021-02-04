@@ -1,6 +1,9 @@
-# Tic Tac Toe: A SPA for playing Tic Tac Toe in the browser
+# Cosmic Tic Tac Toe: A space-themed version of a classic game
 
-This SPA allows a user to play Tic Tac Toe in the browser. I made this application to demonstrate my knowledge of coding fundamentals and to fulfill the project requirements set forth by General Assembly.
+This SPA allows a user to play tic tac toe in the browser.
+
+## Version History
+2/4/21 - Version 2.0.0 is here! This version has made this project out of this world (pun intended)! This update was all about UI/UX.
 
 ## Important Links
 
@@ -37,6 +40,9 @@ I will be following a suggested development schedule to ensure that I don't miss
 ## Images
 
 ---
+
+#### Sneak Peek:
+![Cosmic Tic Tac Toe](https://i.imgur.com/Tp9QwhO.jpg)
 
 #### Wireframe:
 ![Project Wireframe](https://i.imgur.com/tVkpy9M.png)

@@ -18,10 +18,9 @@ const signInSuccess = res => {
   $('#notification-toast').toast('show')
   store.user = res.user
   $('#sign-in-form').trigger('reset')
-  $('#sign-in-section').hide()
-  $('#change-password-section').show()
-  $('#game-controls-section').show()
-  $('#user-controls').show()
+  $('#sign-up-form').trigger('reset')
+  $('.signed-out').hide()
+  $('.signed-in').show()
 }
 const signInFailure = err => {
   $("#err-message").text('Sign in failed, try again')
@@ -32,11 +31,13 @@ const changePasswordSuccess = () => {
   $("#toast-message").text('Successfully changed password for ' + store.user.email)
   $('#notification-toast').toast('show')
   $('#change-password-form').trigger('reset')
+  $('#change-password-modal').modal('hide')
+  $('#change-password-err-alert').hide()
 }
 
 const changePasswordFailure = err => {
-  $("#err-message").text('Password change failed, try again')
-  $('#err-alert').show()
+  $("#change-password-err-message").text('Password change failed, try again')
+  $('#change-password-err-alert').show()
 }
 
 const signOutSuccess = () => {
@@ -44,27 +45,17 @@ const signOutSuccess = () => {
   $('#notification-toast').toast('show')
   delete store.user
   delete store.game
-  $('#user-controls').hide()
+  $('.signed-in').hide()
   $('#game-board-section').hide()
-  $('#game-controls-section').hide()
-  $('#sign-in-section').show()
+  $('.signed-out').show()
   $('.box').text('')
-  $('#games-played').text('')
+  $('#games-played').text('').hide()
+  $('#game-results').hide()
 }
 
 const signOutFailure = err => {
   $("#err-message").text('Sign out failed, try again')
   $('#err-alert').show()
-}
-
-const signUpSwitch = () => {
-  $('#sign-up-section').show()
-  $('#sign-in-section').hide()
-}
-
-const signInSwitch = () => {
-  $('#sign-up-section').hide()
-  $('#sign-in-section').show()
 }
 
 module.exports = {
@@ -75,7 +66,5 @@ module.exports = {
   changePasswordSuccess,
   changePasswordFailure,
   signOutSuccess,
-  signOutFailure,
-  signUpSwitch,
-  signInSwitch
+  signOutFailure
 }

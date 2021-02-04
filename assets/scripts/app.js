@@ -32,11 +32,4 @@ $(() => {
 
   // GET games
   $('#get-games').on('click', gameEvents.onGetGames)
-
-  // MISC Event Listeners
-  // Switch from sign in to sign up
-  $('#sign-up-switch').on('click', authEvents.signUpSwitch)
-
-  // Switch from sign up to sign in
-  $('#sign-in-switch').on('click', authEvents.signInSwitch)
 })
