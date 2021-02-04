@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Cosmic Tic Tac Toe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1 class="display-1">Cosmic Tic Tac Toe</h1>
+
+      <!-- Error Alert -->
+      <div class="alert alert-danger alert-dismissible fade show" role="alert" id="err-alert">
+        <span id="err-message"></span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <!-- This code will only show to a signed in user -->
+      <div class="signed-in">
+        <button class="btn btn-dark" id="get-games">Get Game Count</button>
+        <button class="btn btn-dark" id="change-password" data-toggle="modal" data-target="#change-password-modal">Change Password</button>
+        <button class="btn btn-dark" id="sign-out">Logout</button>
+        <p id="games-played"></p>
+        <br>
+        <button class="btn btn-info" id="create-game-button">New Game</button>
+      </div>
+    </header>
+
+    <main>
+      <div class="signed-out row justify-content-around">
+        <div class="col-5 box-border">
+          <form id="sign-in-form">
+            <fieldset>
+              <legend>Login</legend>
+              <div class="form-group">
+                <label for="sign-in-email">Email</label>
+                <input id="sign-in-email" class="form-control" type="email" name="credentials[email]" placeholder="Email">
+              </div>
+              <div class="form-group">
+                <label for="sign-in-password">Password</label>
+                <input id="sign-in-password" class="form-control" type="password" name="credentials[password]"
+                  placeholder="Password">
+              </div>
+              <button type="submit" class="btn btn-dark">Login</button>
+            </fieldset>
+          </form>
+        </div>
+        <div class="col-5 box-border">
+          <form id="sign-up-form">
+            <fieldset>
+              <legend>Sign Up</legend>
+              <div class="form-group">
+                <label for="sign-up-email">Email</label>
+                <input id="sign-up-email" class="form-control" type="email" name="credentials[email]" placeholder="Email">
+              </div>
+              <div class="form-group">
+                <label for="sign-up-password">Password</label>
+                <input id="sign-up-password" class="form-control" type="password" name="credentials[password]"
+                  placeholder="Password">
+              </div>
+              <div class="form-group">
+                <label for="sign-up-password_confirmation">Password Confirmation</label>
+                <input id="sign-up-password_confirmation" class="form-control" type="password"
+                  name="credentials[password_confirmation]" placeholder="Confirm Password">
+              </div>
+              <button type="submit" class="btn btn-dark">Create Account</button>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+
+      <h1 class="display-1" id="game-results"></h1>
+
+      <section id="game-board-section" class="container board-container">
+        <hr>
+        <p id="player-turn"></p>
+        <div class="row board h-100">
+          <div class="col-4 box" data-cell-index="0" id="0"></div>
+          <div class="col-4 box" data-cell-index="1" id="1"></div>
+          <div class="col-4 box" data-cell-index="2" id="2"></div>
+          <div class="col-4 box" data-cell-index="3" id="3"></div>
+          <div class="col-4 box" data-cell-index="4" id="4"></div>
+          <div class="col-4 box" data-cell-index="5" id="5"></div>
+          <div class="col-4 box" data-cell-index="6" id="6"></div>
+          <div class="col-4 box" data-cell-index="7" id="7"></div>
+          <div class="col-4 box" data-cell-index="8" id="8"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Notification Toast -->
+  <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-end"
+    style="position: absolute; bottom: 5%; width: 100%; min-height: 100px;">
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="notification-toast" data-delay="5000"
+      style="color: #000000;">
+      <div class="toast-header">
+        <strong class="mr-auto">Cosmic Tic Tac Toe</strong>
+        <small>just now</small>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="toast-body" id="toast-message"></div>
+    </div>
+  </div>
+
+  <!-- Change Password Modal Code -->
+  <div class="modal" tabindex="-1" id="change-password-modal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Change Password</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- Error Alert -->
+          <div class="alert alert-danger alert-dismissible fade show" role="alert" id="change-password-err-alert">
+            <span id="change-password-err-message"></span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form id="change-password-form">
+            <fieldset>
+              <div class="form-group">
+                <label for="change-password-old">Old Password</label>
+                <input id="change-password-old" class="form-control" type="password" name="passwords[old]"
+                  placeholder="Old password">
+              </div>
+              <div class="form-group">
+                <label for="change-password-new">New Password</label>
+                <input id="change-password-new" class="form-control" type="password" name="passwords[new]"
+                  placeholder="New password">
+              </div>
+              <button type="submit" class="btn btn-info">Change Password</button>
+            </fieldset>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
